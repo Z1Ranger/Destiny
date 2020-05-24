@@ -3,6 +3,12 @@ import 'story.dart';
 class StoryBrain {
   int _storyNumber = 0;
 
+  final List _map = [
+    [2, 1],
+    [2, 3],
+    [5, 4]
+  ];
+
   List<Story> _storyData = [
     Story(
         storyTitle:
@@ -36,16 +42,26 @@ class StoryBrain {
   ];
 
   String getStory() {
-    return _storyData[0].storyTitle;
+    return _storyData[_storyNumber].storyTitle;
   }
 
   String getChoice1() {
-    return _storyData[0].choice1;
+    return _storyData[_storyNumber].choice1;
   }
 
   String getChoice2() {
-    return _storyData[0].choice2;
+    return _storyData[_storyNumber].choice2;
   }
 
-  void nextStory(int choice) {}
+  void reset() {
+    _storyNumber = 0;
+  }
+
+  void nextStory(int choice) {
+    if ([0, 1, 2].contains(_storyNumber)) {
+      _storyNumber = _map[_storyNumber][choice - 1];
+    } else {
+      reset();
+    }
+  }
 }
