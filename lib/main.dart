@@ -54,7 +54,7 @@ class _StoryPageState extends State<StoryPage> {
                   },
                   color: Colors.red,
                   child: Text(
-                    'Choice 1',
+                    _story.getChoice1(),
                     style: TextStyle(
                       fontSize: 20.0,
                     ),
@@ -72,7 +72,7 @@ class _StoryPageState extends State<StoryPage> {
                   },
                   color: Colors.blue,
                   child: Text(
-                    'Choice 2',
+                    _story.getChoice2(),
                     style: TextStyle(
                       fontSize: 20.0,
                     ),
