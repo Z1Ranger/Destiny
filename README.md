@@ -1,2 +1,2 @@
-# Destiny
+# Destiny 🌄
 Choose your own Adventure
