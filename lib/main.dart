@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'story_brain.dart';
 
 void main() => runApp(Destiny());
 
@@ -10,6 +11,8 @@ class Destiny extends StatelessWidget {
     );
   }
 }
+
+StoryBrain _story = StoryBrain();
 
 class StoryPage extends StatefulWidget {
   _StoryPageState createState() => _StoryPageState();
@@ -36,7 +39,7 @@ class _StoryPageState extends State<StoryPage> {
                 flex: 12,
                 child: Center(
                   child: Text(
-                    'Story text will go here.',
+                    _story.getStory(),
                     style: TextStyle(
                       fontSize: 25.0,
                     ),
