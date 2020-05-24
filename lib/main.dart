@@ -12,13 +12,13 @@ class Destiny extends StatelessWidget {
   }
 }
 
-StoryBrain _story = StoryBrain();
-
 class StoryPage extends StatefulWidget {
   _StoryPageState createState() => _StoryPageState();
 }
 
 class _StoryPageState extends State<StoryPage> {
+  StoryBrain _story = StoryBrain();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +51,11 @@ class _StoryPageState extends State<StoryPage> {
                 child: FlatButton(
                   onPressed: () {
                     //Choice 1 made by user.
-                    _story.nextStory(1);
+                    setState(
+                      () {
+                        _story.nextStory(1);
+                      },
+                    );
                   },
                   color: Colors.red,
                   child: Text(
@@ -67,16 +71,23 @@ class _StoryPageState extends State<StoryPage> {
               ),
               Expanded(
                 flex: 2,
-                child: FlatButton(
-                  onPressed: () {
-                    //Choice 2 made by user.
-                    _story.nextStory(2);
-                  },
-                  color: Colors.blue,
-                  child: Text(
-                    _story.getChoice2(),
-                    style: TextStyle(
-                      fontSize: 20.0,
+                child: Visibility(
+                  visible: _story.buttonShouldBeVisible(),
+                  child: FlatButton(
+                    onPressed: () {
+                      //Choice 2 made by user.
+                      setState(
+                        () {
+                          _story.nextStory(2);
+                        },
+                      );
+                    },
+                    color: Colors.blue,
+                    child: Text(
+                      _story.getChoice2(),
+                      style: TextStyle(
+                        fontSize: 20.0,
+                      ),
                     ),
                   ),
                 ),

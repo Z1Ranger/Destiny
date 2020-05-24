@@ -64,4 +64,12 @@ class StoryBrain {
       reset();
     }
   }
+
+  bool buttonShouldBeVisible() {
+    if ([0, 1, 2].contains(_storyNumber)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
